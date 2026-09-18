@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SpamGuard | SMS Spam Detector</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <header class="header">
+
+            <div class="logo">
+                🛡️
+            </div>
+
+            <h1>
+                <span>SpamGuard</span>
+            </h1>
+
+            <p>
+                Intelligent SMS Spam Detection powered by Machine Learning
+            </p>
+
+        </header>
+
+
+        <main class="card">
+
+            <h2>Analyze Your Message</h2>
+
+            <p class="subtitle">
+                Enter an SMS below and our machine learning model will classify it.
+            </p>
+
+            <form method="POST">
+
+                <textarea
+                    name="text"
+                    placeholder="Example: Congratulations! You have won a free prize..."
+                    required
+                >{{ text or '' }}</textarea>
+
+                <button type="submit">
+                    🔍 Analyze Message
+                </button>
+
+            </form>
+
+
+            {% if label %}
+
+                {% if label == "spam" %}
+
+                    <div class="result spam-result">
+
+                        <div class="result-icon">
+                            🚨
+                        </div>
+
+                        <h3>
+                            SPAM DETECTED
+                        </h3>
+
+                        <p>
+                            This message has been classified as potentially unwanted or promotional.
+                        </p>
+
+                    </div>
+
+                {% else %}
+
+                    <div class="result ham-result">
+
+                        <div class="result-icon">
+                            ✅
+                        </div>
+
+                        <h3>
+                            SAFE MESSAGE
+                        </h3>
+
+                        <p>
+                            This message has been classified as a normal message.
+                        </p>
+
+                    </div>
+
+                {% endif %}
+
+            {% endif %}
+
+
+            <div class="features">
+
+                <div class="feature">
+
+                    <div class="feature-icon">
+                        🤖
+                    </div>
+
+                    <h3>
+                        Machine Learning
+                    </h3>
+
+                    <p>
+                        Logistic Regression classifier
+                    </p>
+
+                </div>
+
+
+                <div class="feature">
+
+                    <div class="feature-icon">
+                        🧠
+                    </div>
+
+                    <h3>
+                        TF-IDF
+                    </h3>
+
+                    <p>
+                        Converts text into numerical features
+                    </p>
+
+                </div>
+
+
+                <div class="feature">
+
+                    <div class="feature-icon">
+                        ⚡
+                    </div>
+
+                    <h3>
+                        Instant Detection
+                    </h3>
+
+                    <p>
+                        Real-time message classification
+                    </p>
+
+                </div>
+
+            </div>
+
+        </main>
+
+
+        <footer>
+            SpamGuard • SMS Spam Detection System • Built with Python & Flask
+        </footer>
+
+    </div>
+
+</body>
+
+</html>
